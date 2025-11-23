@@ -6,12 +6,14 @@
       {{ 'lifestyle-1' | placeholder_svg_tag: 'koan-hero__image placeholder-svg' }}
     {%- endif -%}
 
+    <div class="koan-hero__overlay"></div>
+
     <div class="koan-hero__content">
-      <div class="banner__box koan-hero__box">
-        <h1 class="koan-hero__title">{{ section.settings.heading | default: "LA SAGESSE DE LA RUE" }}</h1>
-        <p class="koan-hero__subtitle">{{ section.settings.subtitle | default: "PAS DE LOGOS VIDES. JUSTE DES VÉRITÉS BRUTES. STREETWEAR ÉTHIQUE POUR LES ESPRITS LIBRES." }}</p>
+      <div class="koan-hero__box">
+        <p class="koan-hero__subtitle">{{ section.settings.subtitle | default: "Collection Automne/Hiver" }}</p>
+        <h1 class="koan-hero__title">{{ section.settings.heading | default: "Élégance essentielle" }}</h1>
         <a href="{{ section.settings.button_link | default: collections.all.url }}" class="button koan-hero__button">
-          {{ section.settings.button_label | default: "TROUVE TON KOAN" }}
+          {{ section.settings.button_label | default: "Découvrir la collection" }}
         </a>
       </div>
     </div>
@@ -20,19 +22,22 @@
 
 <style>
   .koan-hero {
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+    max-width: 100%;
   }
 
   .koan-hero__container {
     position: relative;
     width: 100%;
+    height: 90vh; /* Full height impact */
     min-height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 3px solid #000000; /* Brutal Border for image container too */
     overflow: hidden;
+    border: none; /* Reset from previous brutalist style */
   }
 
   .koan-hero__image {
@@ -45,51 +50,89 @@
     z-index: 0;
   }
 
-  .koan-hero__content {
-    position: relative;
+  .koan-hero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2); /* Light black overlay for readability */
     z-index: 1;
-    max-width: 80rem;
-    padding: 2rem;
-    text-align: center;
   }
 
-  /* Reusing global banner__box styles but enforcing specific overrides if needed */
-  .koan-hero__box {
+  .koan-hero__content {
+    position: relative;
+    z-index: 2;
+    max-width: 120rem;
+    padding: 2rem;
     text-align: center;
+    width: 100%;
+  }
+
+  .koan-hero__box {
+    background: transparent; /* No box */
+    border: none;
+    box-shadow: none;
+    padding: 0;
   }
 
   .koan-hero__title {
-    font-family: "Impact", "Oswald", sans-serif;
-    text-transform: uppercase;
-    font-size: 5rem;
-    line-height: 0.9;
-    margin-bottom: 1.5rem;
-    color: #000000;
+    font-family: "Playfair Display", "Times New Roman", serif;
+    font-weight: 400; /* Light/Regular */
+    font-size: 8rem; /* Gigantic */
+    line-height: 1.1;
+    color: #FFFFFF;
+    margin: 0 0 3rem 0;
+    letter-spacing: 0;
+    text-transform: none; /* Sentence case */
   }
 
   .koan-hero__subtitle {
-    font-family: "Courier New", monospace;
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-bottom: 2.5rem;
+    font-family: "Inter", "Helvetica", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+  }
+
+  .koan-hero__button.button {
+    background-color: #FFFFFF;
     color: #000000;
+    border: none;
+    border-radius: 50px; /* Pill shape */
+    padding: 1.5rem 4rem;
+    font-family: "Inter", sans-serif;
+    font-size: 1.4rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: none;
+  }
+
+  .koan-hero__button.button:hover {
+    transform: scale(1.05);
+    background-color: #F0F0F0;
+    color: #000000;
+    box-shadow: none;
   }
 
   @media screen and (max-width: 749px) {
     .koan-hero__container {
-      min-height: 400px;
+      height: 70vh;
+      min-height: 500px;
     }
     .koan-hero__title {
-      font-size: 3rem;
+      font-size: 4.5rem;
     }
   }
 </style>
 
 {% schema %}
 {
-  "name": "Koan Hero",
+  "name": "Koan Hero (Premium)",
   "tag": "section",
   "class": "section",
   "settings": [
@@ -102,19 +145,19 @@
       "type": "text",
       "id": "heading",
       "label": "Titre",
-      "default": "LA SAGESSE DE LA RUE"
+      "default": "Élégance essentielle"
     },
     {
-      "type": "textarea",
+      "type": "text",
       "id": "subtitle",
       "label": "Sous-titre",
-      "default": "PAS DE LOGOS VIDES. JUSTE DES VÉRITÉS BRUTES. STREETWEAR ÉTHIQUE POUR LES ESPRITS LIBRES."
+      "default": "COLLECTION AUTOMNE/HIVER"
     },
     {
       "type": "text",
       "id": "button_label",
       "label": "Texte du bouton",
-      "default": "TROUVE TON KOAN"
+      "default": "Découvrir la collection"
     },
     {
       "type": "url",
@@ -124,7 +167,7 @@
   ],
   "presets": [
     {
-      "name": "Koan Hero"
+      "name": "Koan Hero (Premium)"
     }
   ]
 }
