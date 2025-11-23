@@ -3622,3 +3622,111 @@ body {
   background-color: #FAFAFA !important;
   color: #000000 !important;
 }
+
+/* =========================================
+   KOAN APPAREL - HEADER & ANNOUNCEMENT
+   ========================================= */
+
+/* ANNOUNCEMENT BAR - MARQUEE */
+.announcement-bar {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: var(--font-body-family) !important;
+  border-bottom: 0px !important;
+}
+
+.announcement-bar .page-width {
+  padding: 0 !important;
+  max-width: 100% !important;
+}
+
+.announcement-bar__message {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 20s linear infinite;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: #FFFFFF !important;
+  margin: 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.announcement-bar a {
+    color: #FFFFFF !important;
+}
+
+@keyframes marquee {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-100%, 0); }
+}
+
+/* Force override for Dawn's slider structure if present */
+.announcement-bar-slider, .announcement-bar-slider .grid, .announcement-bar-slider .grid__item {
+    display: block !important;
+    width: 100% !important;
+}
+.announcement-bar .slider-button { display: none !important; }
+
+
+/* HEADER - STRUCTURAL & SOLID */
+.header-wrapper {
+  border-bottom: 2px solid #000000 !important;
+  background-color: #FAFAFA !important;
+  /* Sticky behavior is handled by Dawn settings, but we ensure it's solid */
+}
+
+/* Ensure sticky header doesn't shrink or fade */
+.shopify-section-header-sticky .header-wrapper {
+  background-color: #FAFAFA !important;
+  box-shadow: none !important;
+  border-bottom: 2px solid #000000 !important;
+}
+
+.header__heading-logo {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* MENU - OSWALD UPPERCASE CENTERED */
+.header__inline-menu {
+  text-align: center;
+}
+
+.header__menu-item {
+  font-family: var(--font-heading-family) !important;
+  text-transform: uppercase !important;
+  font-size: 1.6rem !important;
+  font-weight: 700 !important;
+  color: #000000 !important;
+  letter-spacing: 0.1em;
+}
+
+/* ICONS - BLOCKY & BLACK */
+.header__icon, .header__icon .icon {
+  color: #000000 !important;
+  fill: #000000 !important;
+}
+
+.header__icon:hover {
+  transform: none !important; /* Remove bounce, keep it rigid */
+  opacity: 0.7;
+}
+
+/* Make icons look a bit thicker via stroke if they are SVGs with stroke */
+.header__icon svg path {
+  stroke-width: 2px;
+}
+
+/* Force Layout overrides if settings don't match exactly */
+@media screen and (min-width: 990px) {
+    .header {
+        grid-template-columns: 1fr auto 1fr; /* Default Dawn layout usually works, but we enforce spacing */
+    }
+
+    /* If Logo Left, Menu Center, Icons Right is desired: */
+    /* Dawn 'middle-left' setting does: Logo Left, Menu Center (ish), Icons Right. */
+    /* We just need to make sure the menu is truly centered if it isn't. */
+}
