@@ -1,0 +1,188 @@
+<div class="koan-manifesto page-width">
+  <!-- PARTIE 1: INTRO -->
+  <div class="koan-manifesto__intro">
+    <h2 class="koan-manifesto__title">{{ section.settings.main_heading | default: "ON NE FAIT PAS DES VÊTEMENTS." }}</h2>
+    <div class="koan-manifesto__text rte">
+      <p>{{ section.settings.main_text | default: "On nous a appris que la sagesse se trouvait dans de vieux livres. Nous, on pense qu'elle est sur le béton. Koan Apparel, c'est le pont entre la culture d'hier et l'énergie d'aujourd'hui. Chaque pièce est une conversation." }}</p>
+    </div>
+  </div>
+
+  <!-- PARTIE 2: COLONNES -->
+  <div class="koan-manifesto__grid">
+    <div class="koan-manifesto__col">
+      <h3 class="koan-manifesto__col-title">{{ section.settings.col1_title | default: "ART AUTHENTIQUE" }}</h3>
+      <p class="koan-manifesto__col-text">{{ section.settings.col1_text | default: "Pas de banques d'images. De vraies collabs avec des artistes graffeurs." }}</p>
+    </div>
+    <div class="koan-manifesto__col">
+      <h3 class="koan-manifesto__col-title">{{ section.settings.col2_title | default: "IMPACT ZÉRO" }}</h3>
+      <p class="koan-manifesto__col-text">{{ section.settings.col2_text | default: "Coton bio, encres à l'eau, zéro plastique. Ta conscience est clean." }}</p>
+    </div>
+    <div class="koan-manifesto__col">
+      <h3 class="koan-manifesto__col-title">{{ section.settings.col3_title | default: "SENS > STYLE" }}</h3>
+      <p class="koan-manifesto__col-text">{{ section.settings.col3_text | default: "Tu ne portes pas une marque, tu portes une idée." }}</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .koan-manifesto {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    border-bottom: 1px solid #000000; /* Separator at the bottom */
+  }
+
+  .koan-manifesto__intro {
+    text-align: center;
+    max-width: 80rem;
+    margin: 0 auto 6rem auto;
+  }
+
+  .koan-manifesto__title {
+    font-family: "Impact", "Oswald", sans-serif;
+    font-size: 4rem;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    color: #000000;
+  }
+
+  .koan-manifesto__text p {
+    font-family: "Courier New", monospace;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: #000000;
+  }
+
+  /* GRID 3 COLS WITH VERTICAL BORDERS */
+  .koan-manifesto__grid {
+    display: flex;
+    justify-content: space-between;
+    border-top: 3px solid #000000; /* Strong separation line */
+    padding-top: 4rem;
+  }
+
+  .koan-manifesto__col {
+    flex: 1;
+    padding: 0 2rem;
+    text-align: left;
+    border-right: 1px solid #000000; /* Vertical separator */
+  }
+
+  .koan-manifesto__col:last-child {
+    border-right: none;
+  }
+
+  .koan-manifesto__col:first-child {
+    padding-left: 0;
+  }
+
+  .koan-manifesto__col:last-child {
+    padding-right: 0;
+  }
+
+  .koan-manifesto__col-title {
+    font-family: "Impact", "Oswald", sans-serif;
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    color: #000000;
+  }
+
+  .koan-manifesto__col-text {
+    font-family: "Courier New", monospace;
+    font-size: 1.3rem;
+    color: #333333;
+  }
+
+  /* MOBILE RESPONSIVE */
+  @media screen and (max-width: 749px) {
+    .koan-manifesto__title {
+      font-size: 3rem;
+    }
+
+    .koan-manifesto__grid {
+      flex-direction: column;
+    }
+
+    .koan-manifesto__col {
+      border-right: none;
+      border-bottom: 1px solid #000000;
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    .koan-manifesto__col:last-child {
+      border-bottom: none;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Koan Manifesto",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Partie 1 : Intro"
+    },
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Titre Principal",
+      "default": "ON NE FAIT PAS DES VÊTEMENTS."
+    },
+    {
+      "type": "textarea",
+      "id": "main_text",
+      "label": "Texte Principal",
+      "default": "On nous a appris que la sagesse se trouvait dans de vieux livres. Nous, on pense qu'elle est sur le béton. Koan Apparel, c'est le pont entre la culture d'hier et l'énergie d'aujourd'hui. Chaque pièce est une conversation."
+    },
+    {
+      "type": "header",
+      "content": "Partie 2 : Colonnes"
+    },
+    {
+      "type": "text",
+      "id": "col1_title",
+      "label": "Titre Col 1",
+      "default": "ART AUTHENTIQUE"
+    },
+    {
+      "type": "text",
+      "id": "col1_text",
+      "label": "Texte Col 1",
+      "default": "Pas de banques d'images. De vraies collabs avec des artistes graffeurs."
+    },
+    {
+      "type": "text",
+      "id": "col2_title",
+      "label": "Titre Col 2",
+      "default": "IMPACT ZÉRO"
+    },
+    {
+      "type": "text",
+      "id": "col2_text",
+      "label": "Texte Col 2",
+      "default": "Coton bio, encres à l'eau, zéro plastique. Ta conscience est clean."
+    },
+    {
+      "type": "text",
+      "id": "col3_title",
+      "label": "Titre Col 3",
+      "default": "SENS > STYLE"
+    },
+    {
+      "type": "text",
+      "id": "col3_text",
+      "label": "Texte Col 3",
+      "default": "Tu ne portes pas une marque, tu portes une idée."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Koan Manifesto"
+    }
+  ]
+}
+{% endschema %}
