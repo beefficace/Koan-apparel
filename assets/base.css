@@ -3517,3 +3517,108 @@ details-disclosure > details {
     --border-offset: 0px; /* Prevent the border from growing on buttons when this effect is on. */
   }
 }
+
+/* =========================================
+   KOAN APPAREL - GLOBAL STYLES OVERRIDE
+   ========================================= */
+
+:root {
+  /* COLORS - Based on user request */
+  /* Background: #FAFAFA -> 250, 250, 250 */
+  --color-background: 250, 250, 250;
+  --gradient-background: #FAFAFA;
+
+  /* Text: #000000 -> 0, 0, 0 */
+  --color-foreground: 0, 0, 0;
+  --color-link: 0, 0, 0;
+
+  /* Accents/Buttons: #333333 -> 51, 51, 51 */
+  --color-button: 51, 51, 51;
+  --color-button-text: 255, 255, 255;
+  --color-base-accent-1: 51, 51, 51;
+
+  /* Military Khaki accent #4B5320 -> 75, 83, 32 */
+  --color-base-accent-2: 75, 83, 32;
+
+  /* SHAPES - Brutalist (Zero Radius) */
+  --border-radius: 0px;
+  --buttons-radius: 0px;
+  --buttons-radius-outset: 0px;
+  --inputs-radius: 0px;
+  --inputs-radius-outset: 0px;
+  --product-card-corner-radius: 0px;
+  --collection-card-corner-radius: 0px;
+  --blog-card-corner-radius: 0px;
+  --media-radius: 0px;
+  --popup-corner-radius: 0px;
+  --badge-corner-radius: 0px;
+  --text-boxes-radius: 0px;
+
+  /* TYPOGRAPHY */
+  /* Headings: Sans-serif, thick/compact (Oswald/Anton/Impact fallback) */
+  --font-heading-family: "Oswald", "Anton", "Impact", "Helvetica Neue", Helvetica, sans-serif;
+  --font-heading-style: normal;
+  --font-heading-weight: 700;
+
+  /* Body: Monospace (Courier New/Roboto Mono) */
+  --font-body-family: "Courier New", "Roboto Mono", monospace;
+  --font-body-style: normal;
+  --font-body-weight: 400;
+}
+
+/* FORCE ZERO RADIUS EVERYWHERE - "Sharp" look */
+*, *::before, *::after {
+  border-radius: 0 !important;
+}
+
+/* TYPOGRAPHY REFINEMENTS */
+h1, h2, h3, h4, h5, h6, .h0, .h1, .h2, .h3, .h4, .h5 {
+  font-family: var(--font-heading-family) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em;
+}
+
+body, p, a, li, .caption, .customer .field input, .field__input, .rte {
+  font-family: var(--font-body-family) !important;
+}
+
+/* BUTTON STYLES - Outline & Sharp */
+.button, .shopify-challenge__button, .customer button, .newsletter-form__button {
+  border: 1px solid #000000 !important;
+  background-color: #333333;
+  color: #FFFFFF;
+  transition: all 0.2s ease;
+  box-shadow: none !important;
+}
+
+.button:hover, .shopify-challenge__button:hover, .customer button:hover, .newsletter-form__button:hover {
+  background-color: transparent !important;
+  color: #000000 !important;
+  box-shadow: none !important;
+}
+
+/* Secondary Button Styles */
+.button--secondary {
+   background-color: transparent;
+   color: #000000;
+   border: 1px solid #000000 !important;
+}
+
+.button--secondary:hover {
+   background-color: #000000 !important;
+   color: #FFFFFF !important;
+}
+
+/* NAVIGATION - Thick Marker Underline */
+.header__menu-item:hover span {
+  text-decoration: underline;
+  text-decoration-color: #000000;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+
+/* Ensure Body Background matches */
+body {
+  background-color: #FAFAFA !important;
+  color: #000000 !important;
+}
