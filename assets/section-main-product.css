@@ -1496,3 +1496,90 @@ a.product__text {
     border: none;
   }
 }
+
+/* =========================================
+   KOAN APPAREL - PRODUCT PAGE
+   ========================================= */
+
+/* VARIANT SELECTORS (Pills -> Squares) */
+.product-form__input input[type=radio] + label {
+  border-radius: 0 !important;
+  border: 1px solid #000000 !important;
+  padding: 1.5rem 2rem !important;
+  min-width: 5rem !important;
+  min-height: 5rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: #FFFFFF;
+  color: #000000;
+  font-family: "Courier New", monospace !important;
+  font-weight: 700 !important;
+  margin-right: 0.5rem !important;
+  transition: all 0.2s ease;
+}
+
+.product-form__input input[type=radio]:checked + label {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  box-shadow: 2px 2px 0px 0px #000000 !important; /* Subtle indication of selection */
+}
+
+.product-form__input input[type=radio] + label:hover {
+  box-shadow: 2px 2px 0px 0px #000000 !important;
+  transform: translate(-1px, -1px);
+}
+
+/* ADD TO CART BUTTON - HEAVY BLOCK */
+.product-form__submit, .shopify-payment-button__button {
+  border-radius: 0 !important;
+  border: 1px solid #000000 !important;
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  text-transform: uppercase !important;
+  font-family: "Impact", "Oswald", sans-serif !important;
+  font-size: 1.8rem !important;
+  letter-spacing: 0.1em !important;
+  padding: 1.5rem !important;
+  min-height: 5.5rem !important; /* Heavier look */
+  transition: all 0.2s ease;
+}
+
+.product-form__submit:hover, .shopify-payment-button__button:hover {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  box-shadow: 4px 4px 0px 0px #000000 !important;
+}
+
+/* ACCORDIONS - THICK LINES & TECH LOOK */
+.product__accordion .accordion__title {
+  font-family: "Impact", "Oswald", sans-serif !important;
+  text-transform: uppercase !important;
+  font-size: 1.4rem !important;
+  letter-spacing: 0.05em !important;
+}
+
+.product__accordion {
+  border-top: 1px solid #000000 !important;
+  border-bottom: 1px solid #000000 !important;
+}
+
+.product__accordion .icon {
+  color: #000000 !important;
+  /* Ensure icons are black */
+}
+
+/* PRODUCT TITLE - MASSIVE */
+.product__title h1 {
+  font-family: "Impact", "Oswald", sans-serif !important;
+  text-transform: uppercase !important;
+  font-size: 4rem !important; /* Very large */
+  line-height: 0.9 !important;
+  margin-bottom: 1rem !important;
+}
+
+@media screen and (max-width: 749px) {
+  .product__title h1 {
+    font-size: 3rem !important;
+  }
+}
