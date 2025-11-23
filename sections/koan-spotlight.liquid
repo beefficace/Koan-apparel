@@ -1,0 +1,224 @@
+<div class="koan-spotlight page-width">
+  <div class="koan-spotlight__container">
+    <div class="koan-spotlight__image-col">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1500 | image_tag: class: 'koan-spotlight__img', loading: 'lazy' }}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'koan-spotlight__img placeholder-svg' }}
+      {%- endif -%}
+    </div>
+
+    <div class="koan-spotlight__text-col">
+      <div class="koan-spotlight__content">
+        <h2 class="koan-spotlight__title">{{ section.settings.heading | default: "LE KOAN #01" }}</h2>
+
+        <div class="koan-spotlight__origin rte">
+          <h3 class="koan-spotlight__subtitle">L'ORIGINE</h3>
+          <p>{{ section.settings.origin_text | default: "Une interprétation moderne de la fable du tigre. Ce design incarne la force tranquille nécessaire pour naviguer dans la jungle urbaine. Portez-le comme une armure." }}</p>
+        </div>
+
+        <div class="koan-spotlight__specs">
+          <h3 class="koan-spotlight__subtitle">LES SPECS</h3>
+          <ul class="koan-spotlight__list">
+            {%- for block in section.blocks -%}
+              <li class="koan-spotlight__item">{{ block.settings.text }}</li>
+            {%- else -%}
+              <li class="koan-spotlight__item">Coton Bio Certifié GOTS</li>
+              <li class="koan-spotlight__item">Grammage Lourd 240g/m²</li>
+              <li class="koan-spotlight__item">Sérigraphie Artisanale</li>
+            {%- endfor -%}
+          </ul>
+        </div>
+
+        <a href="{{ section.settings.button_link | default: collections.all.url }}" class="button koan-spotlight__button">
+          {{ section.settings.button_label | default: "SHOP THIS KOAN" }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .koan-spotlight {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .koan-spotlight__container {
+    display: flex;
+    border: 2px solid #000000;
+    background-color: #FAFAFA;
+  }
+
+  /* IMAGE COLUMN */
+  .koan-spotlight__image-col {
+    flex: 1;
+    border-right: 2px solid #000000;
+    position: relative;
+    min-height: 500px;
+  }
+
+  .koan-spotlight__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* TEXT COLUMN */
+  .koan-spotlight__text-col {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 4rem;
+  }
+
+  .koan-spotlight__content {
+    width: 100%;
+    max-width: 50rem;
+    margin: 0 auto;
+  }
+
+  .koan-spotlight__title {
+    font-family: "Impact", "Oswald", sans-serif;
+    text-transform: uppercase;
+    font-size: 4rem;
+    line-height: 1;
+    margin-bottom: 2rem;
+    color: #000000;
+  }
+
+  .koan-spotlight__subtitle {
+    font-family: "Impact", "Oswald", sans-serif;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #000000;
+    letter-spacing: 0.05em;
+  }
+
+  .koan-spotlight__origin {
+    margin-bottom: 3rem;
+  }
+
+  .koan-spotlight__origin p {
+    font-family: "Courier New", monospace;
+    font-size: 1.4rem;
+    line-height: 1.6;
+  }
+
+  .koan-spotlight__specs {
+    margin-bottom: 4rem;
+  }
+
+  .koan-spotlight__list {
+    list-style: square inside;
+    padding: 0;
+    margin: 0;
+  }
+
+  .koan-spotlight__item {
+    font-family: "Courier New", monospace;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .koan-spotlight__button {
+    width: 100%;
+    background-color: #000000;
+    color: #FFFFFF;
+    border: 1px solid #000000;
+    text-transform: uppercase;
+    font-family: "Impact", "Oswald", sans-serif;
+    letter-spacing: 0.1em;
+    border-radius: 0;
+  }
+
+  .koan-spotlight__button:hover {
+    background-color: #FFFFFF;
+    color: #000000;
+    box-shadow: 4px 4px 0px 0px #000000;
+  }
+
+  @media screen and (max-width: 900px) {
+    .koan-spotlight__container {
+      flex-direction: column;
+    }
+
+    .koan-spotlight__image-col {
+      border-right: none;
+      border-bottom: 2px solid #000000;
+      height: 400px;
+      min-height: auto;
+    }
+
+    .koan-spotlight__text-col {
+      padding: 3rem 2rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Koan Spotlight",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image Produit"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre du Koan",
+      "default": "LE KOAN #01"
+    },
+    {
+      "type": "textarea",
+      "id": "origin_text",
+      "label": "Texte Origine",
+      "default": "Une interprétation moderne de la fable du tigre. Ce design incarne la force tranquille."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Label Bouton",
+      "default": "SHOP THIS KOAN"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Lien Bouton"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "spec",
+      "name": "Spécification",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texte",
+          "default": "Caractéristique technique"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Koan Spotlight",
+      "blocks": [
+        { "type": "spec", "settings": { "text": "Coton Bio Certifié GOTS" } },
+        { "type": "spec", "settings": { "text": "Grammage Lourd 240g/m²" } },
+        { "type": "spec", "settings": { "text": "Sérigraphie Artisanale" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

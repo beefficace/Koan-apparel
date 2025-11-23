@@ -1,0 +1,78 @@
+<div class="koan-scrolling-banner">
+  <div class="koan-scrolling-banner__track">
+    <div class="koan-scrolling-banner__content">
+      {%- assign text_to_repeat = section.settings.text | default: "SLOW FASHION • URBAN WISDOM • ORGANIC COTTON • THINK DIFFERENT •" -%}
+      {%- for i in (1..10) -%}
+        <span class="koan-scrolling-banner__item">{{ text_to_repeat }}</span>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<style>
+  .koan-scrolling-banner {
+    background-color: #000000;
+    color: #FFFFFF;
+    overflow: hidden;
+    white-space: nowrap;
+    border-top: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    padding: 1.5rem 0;
+  }
+
+  .koan-scrolling-banner__track {
+    display: flex;
+    width: fit-content;
+    animation: koan-scroll 30s linear infinite;
+  }
+
+  .koan-scrolling-banner__content {
+    display: flex;
+  }
+
+  .koan-scrolling-banner__item {
+    font-family: "Courier New", monospace;
+    font-size: 2.5rem; /* Giant Monospace */
+    font-weight: 700;
+    text-transform: uppercase;
+    padding-right: 4rem;
+    display: inline-block;
+  }
+
+  @keyframes koan-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Ensure smoother animation on mobile */
+  @media screen and (max-width: 749px) {
+    .koan-scrolling-banner__item {
+      font-size: 1.8rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Koan Scrolling Banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Texte défilant",
+      "default": "SLOW FASHION • URBAN WISDOM • ORGANIC COTTON • THINK DIFFERENT •"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Koan Scrolling Banner"
+    }
+  ]
+}
+{% endschema %}
