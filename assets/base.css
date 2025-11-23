@@ -3811,3 +3811,87 @@ body {
   box-shadow: 8px 8px 0px 0px #000000 !important;
   border: 3px solid #000000 !important;
 }
+
+
+/* =========================================
+   KOAN APPAREL - PRODUCT GRID & CARDS
+   ========================================= */
+
+/* CARD CONTAINER - SHARP & BORDERED */
+.card-wrapper, .card, .card__inner {
+  border-radius: 0 !important;
+}
+
+.card-wrapper {
+  border: 1px solid #000000 !important;
+  background-color: #FFFFFF; /* Ensure cards have background */
+  transition: all 0.2s ease;
+}
+
+/* HOVER EFFECT - HARD SHADOW & LIFT */
+.card-wrapper:hover {
+  box-shadow: 4px 4px 0px 0px #000000 !important;
+  transform: translate(-2px, -2px);
+}
+
+/* SEPARATOR LINE */
+.card__media {
+  border-bottom: 1px solid #000000 !important;
+  margin-bottom: 0 !important; /* Remove default spacing to stick to text */
+}
+
+/* PRODUCT INFO */
+.card__information {
+  text-align: left !important;
+  padding: 1rem 1.2rem !important;
+}
+
+.card__heading {
+  font-family: "Impact", "Oswald", sans-serif !important;
+  text-transform: uppercase !important;
+  font-size: 1.6rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.card-information > .price {
+  font-family: "Courier New", "Roboto Mono", monospace !important;
+  font-size: 1.4rem !important;
+  font-weight: 600 !important;
+  color: #000000 !important;
+}
+
+/* BADGES - TECHNICAL STICKERS */
+.card__badge {
+  align-self: flex-start !important;
+  grid-row-start: 1 !important;
+  justify-self: flex-start !important;
+  margin: 0 !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 2;
+}
+
+.badge {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  border-radius: 0 !important;
+  border: none !important;
+  font-family: "Courier New", monospace !important;
+  text-transform: uppercase !important;
+  padding: 0.5rem 1rem !important;
+  font-size: 1.1rem !important;
+  letter-spacing: 0.1em !important;
+}
+
+/* Override Dawn specific card inner borders to avoid double borders */
+.card .card__inner {
+  border: none !important;
+}
+
+/* Ensure image fills correctly */
+.card__media .media img {
+  border-radius: 0 !important;
+}
