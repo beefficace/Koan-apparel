@@ -514,3 +514,104 @@
     }
   }
 }
+
+/* =========================================
+   KOAN APPAREL - FOOTER
+   ========================================= */
+
+/* FOOTER BASE - BLACK MONOLITH */
+.footer {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  border-top: 1px solid #FFFFFF !important;
+}
+
+.footer__content-top, .footer__content-bottom {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+/* TYPOGRAPHY */
+.footer-block__heading {
+  font-family: "Impact", "Oswald", sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  color: #FFFFFF !important;
+  font-size: 1.6rem !important;
+}
+
+.footer-block__details-content, .footer__copyright, .footer__copyright a, .list-menu__item--link {
+  font-family: "Courier New", "Roboto Mono", monospace !important;
+  color: #FFFFFF !important;
+  font-size: 1.2rem !important;
+}
+
+.footer-block__details-content .list-menu__item--link:hover, .copyright__content a:hover {
+  color: #CCCCCC !important;
+  text-decoration: underline !important;
+}
+
+/* NEWSLETTER INPUT */
+.footer__newsletter .field__input {
+  background-color: #000000 !important;
+  border: 1px solid #FFFFFF !important;
+  color: #FFFFFF !important;
+  border-radius: 0 !important;
+  font-family: "Courier New", monospace !important;
+}
+
+.footer__newsletter .field__input:focus {
+  box-shadow: 0 0 0 1px #FFFFFF !important;
+}
+
+.footer__newsletter .field__label {
+  color: #CCCCCC !important;
+}
+
+/* NEWSLETTER BUTTON */
+.footer__newsletter .newsletter-form__button {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  border: 1px solid #FFFFFF !important;
+  border-radius: 0 !important;
+  width: 4.6rem !important;
+  height: 4.6rem !important; /* Match standard input height */
+  margin-left: -1px !important; /* Merge borders */
+  transition: all 0.2s ease;
+}
+
+.footer__newsletter .newsletter-form__button:hover {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+.footer__newsletter .newsletter-form__button .icon {
+  color: inherit !important;
+}
+
+/* SOCIAL ICONS - CLEANUP */
+.footer__list-social .list-social__item .icon {
+  color: #FFFFFF !important;
+  width: 2rem !important;
+  height: 2rem !important;
+}
+
+/* Remove default social circles if strictly icon desired, or make them squares */
+/* Making them subtle squares to fit the blocky theme */
+.footer__list-social .list-social__link {
+  padding: 1rem !important;
+  border-radius: 0 !important;
+}
+
+.footer__list-social .list-social__link:hover .icon {
+  transform: scale(1.1);
+}
+
+/* COPYRIGHT & BOTTOM */
+.footer__content-bottom {
+  border-top: 1px solid #333333 !important; /* Subtle separator inside the black block */
+}
+
+.footer__copyright small {
+  color: #FFFFFF !important;
+}
