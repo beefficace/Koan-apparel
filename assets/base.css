@@ -3517,3 +3517,271 @@ details-disclosure > details {
     --border-offset: 0px; /* Prevent the border from growing on buttons when this effect is on. */
   }
 }
+
+/* =========================================
+   KOAN APPAREL - PREMIUM MINIMALIST RESET
+   ========================================= */
+
+:root {
+  /* COLORS - Premium Neutral */
+  --color-background: 255, 255, 255;
+  --gradient-background: #FFFFFF;
+  --color-foreground: 26, 26, 26; /* #1A1A1A - Soft Black */
+  --color-link: 26, 26, 26;
+
+  /* Accents */
+  --color-button: 26, 26, 26;
+  --color-button-text: 255, 255, 255;
+  --color-base-accent-1: 26, 26, 26;
+  --color-base-accent-2: 26, 26, 26;
+
+  /* TYPOGRAPHY - Elegance */
+  /* Headings: Serif, Light, Normal Case */
+  --font-heading-family: "Playfair Display", "Bodoni MT", "Times New Roman", serif;
+  --font-heading-style: normal;
+  --font-heading-weight: 400;
+  --font-heading-scale: 1.1; /* Slightly larger base */
+
+  /* Body: Clean Sans-Serif */
+  --font-body-family: "Inter", "Assistant", "Helvetica Neue", Helvetica, sans-serif;
+  --font-body-style: normal;
+  --font-body-weight: 400;
+  --font-body-scale: 1.0;
+
+  /* SHAPES - Soft & Pill */
+  --border-radius: 4px; /* Slight rounding for images */
+  --buttons-radius: 50px; /* Pill shape for buttons */
+  --buttons-radius-outset: 50px;
+  --inputs-radius: 4px;
+
+  /* SPACING */
+  --page-width: 1400px; /* Wider layout */
+}
+
+/* UNIVERSAL RESET - CLEANUP BRUTALISM */
+*, *::before, *::after {
+  border-radius: inherit; /* Respect variable radius */
+  border: none; /* Clear explicit borders */
+  box-shadow: none !important; /* Clear hard shadows */
+}
+
+body {
+  background-color: #FFFFFF !important;
+  color: #1A1A1A !important;
+  letter-spacing: 0.02em; /* Improved readability */
+}
+
+/* TYPOGRAPHY OVERRIDES */
+h1, h2, h3, h4, h5, h6, .h0, .h1, .h2, .h3, .h4, .h5 {
+  font-family: var(--font-heading-family) !important;
+  text-transform: none !important; /* Disable Uppercase */
+  letter-spacing: 0.02em !important;
+  font-weight: 400 !important;
+  color: #1A1A1A !important;
+}
+
+/* BUTTONS - MINIMAL PILL */
+.button, .shopify-challenge__button, .customer button, .newsletter-form__button, .shopify-payment-button__button {
+  border-radius: 50px !important;
+  background-color: #1A1A1A !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  padding: 1.2rem 3rem !important;
+  font-family: var(--font-body-family) !important;
+  font-size: 1.4rem !important;
+  letter-spacing: 0.05em !important;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: none !important;
+}
+
+.button:hover, .shopify-payment-button__button:hover {
+  opacity: 0.85 !important;
+  background-color: #1A1A1A !important; /* Keep black */
+  transform: translateY(-1px); /* Subtle lift */
+}
+
+.button--secondary {
+  background-color: transparent !important;
+  color: #1A1A1A !important;
+  border: 1px solid #1A1A1A !important; /* Fine border for secondary */
+}
+
+.button--secondary:hover {
+  background-color: #1A1A1A !important;
+  color: #FFFFFF !important;
+}
+
+/* HEADER - ETHEREAL */
+.header-wrapper {
+  border-bottom: none !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(5px);
+}
+
+.header__icon, .header__menu-item {
+  color: #1A1A1A !important;
+}
+
+.header__menu-item {
+  font-family: var(--font-body-family) !important;
+  text-transform: none !important;
+  font-weight: 400 !important;
+  font-size: 1.5rem !important;
+}
+
+.header__menu-item:hover span {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px; /* Fine line */
+}
+
+/* HERO BANNER - FLOATING TEXT */
+.banner__box {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.banner__heading {
+  font-family: var(--font-heading-family) !important;
+  font-size: 5rem !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  line-height: 1.2 !important;
+  color: #1A1A1A; /* Default to dark, but user can change scheme */
+  text-shadow: none !important;
+}
+
+/* PRODUCT CARDS - CLEAN GALLERY */
+.card-wrapper {
+  border: none !important;
+  background-color: transparent !important;
+}
+
+.card__inner {
+  border-radius: 4px !important; /* Soft corners */
+  overflow: hidden;
+}
+
+.card__media {
+  border: none !important;
+}
+
+/* Hover Scale Effect */
+.card-wrapper:hover .media img {
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+}
+
+/* Card Info */
+.card__information {
+  padding-top: 1.5rem !important;
+  text-align: center !important; /* Center align for gallery feel */
+}
+
+.card__heading {
+  font-family: var(--font-heading-family) !important;
+  font-size: 1.6rem !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  letter-spacing: 0.02em !important;
+}
+
+.price-item {
+  font-family: var(--font-body-family) !important;
+  font-size: 1.4rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0;
+}
+
+/* BADGES - MINIMAL */
+.badge {
+  border-radius: 50px !important;
+  background-color: #1A1A1A !important;
+  color: #FFFFFF !important;
+  font-family: var(--font-body-family) !important;
+  font-size: 1rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: none !important;
+}
+
+.card__badge {
+  top: 1rem !important;
+  left: 1rem !important;
+}
+
+/* FOOTER - CLEAN FOUNDATION */
+.footer {
+  background-color: #FFFFFF !important;
+  color: #1A1A1A !important;
+  border-top: 1px solid #F0F0F0 !important; /* Very subtle divider */
+}
+
+.footer__content-top, .footer__content-bottom {
+  background-color: #FFFFFF !important;
+  color: #1A1A1A !important;
+}
+
+.footer-block__heading {
+  font-family: var(--font-body-family) !important; /* Headings same as body for minimal look */
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  font-size: 1.2rem !important;
+  letter-spacing: 0.1em !important;
+  color: #1A1A1A !important;
+}
+
+.footer-block__details-content, .footer__copyright {
+  font-family: var(--font-body-family) !important;
+  font-size: 1.3rem !important;
+  color: #666666 !important; /* Softer gray for footer text */
+}
+
+/* Newsletter */
+.footer__newsletter .field__input {
+  background-color: #F9F9F9 !important; /* Light gray input */
+  border: none !important;
+  border-radius: 4px !important;
+  color: #1A1A1A !important;
+}
+
+.footer__newsletter .newsletter-form__button {
+  background-color: transparent !important;
+  color: #1A1A1A !important;
+  width: auto !important;
+}
+
+/* PRODUCT PAGE VARIANT PICKERS */
+.product-form__input input[type=radio] + label {
+  border-radius: 50px !important; /* Pill */
+  border: 1px solid #E5E5E5 !important;
+  background-color: #FFFFFF !important;
+  color: #1A1A1A !important;
+  font-family: var(--font-body-family) !important;
+  min-width: auto !important;
+  padding: 1rem 2rem !important;
+}
+
+.product-form__input input[type=radio]:checked + label {
+  background-color: #1A1A1A !important;
+  color: #FFFFFF !important;
+  border-color: #1A1A1A !important;
+  box-shadow: none !important;
+}
+
+/* Accordions */
+.product__accordion {
+  border-top: 1px solid #E5E5E5 !important;
+  border-bottom: none !important;
+}
+.product__accordion:last-child {
+  border-bottom: 1px solid #E5E5E5 !important;
+}
+
+.product__accordion .accordion__title {
+  font-family: var(--font-body-family) !important;
+  text-transform: none !important;
+  font-weight: 500 !important;
+}

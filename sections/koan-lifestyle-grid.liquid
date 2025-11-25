@@ -1,0 +1,184 @@
+<div class="koan-lifestyle-grid page-width">
+  <div class="koan-lifestyle-grid__container">
+    <!-- LARGE IMAGE (LEFT) -->
+    <div class="koan-lifestyle-grid__item koan-lifestyle-grid__item--large">
+      {%- if section.settings.image_1 != blank -%}
+        {{ section.settings.image_1 | image_url: width: 1000 | image_tag: class: 'koan-lifestyle-grid__img', loading: 'lazy' }}
+      {%- else -%}
+        {{ 'collection-1' | placeholder_svg_tag: 'koan-lifestyle-grid__img placeholder-svg' }}
+      {%- endif -%}
+      <div class="koan-lifestyle-grid__overlay">
+        <span>{{ section.settings.label_1 | default: "PARIS" }}</span>
+      </div>
+    </div>
+
+    <!-- STACKED IMAGES (RIGHT) -->
+    <div class="koan-lifestyle-grid__col-right">
+      <div class="koan-lifestyle-grid__item">
+        {%- if section.settings.image_2 != blank -%}
+          {{ section.settings.image_2 | image_url: width: 800 | image_tag: class: 'koan-lifestyle-grid__img', loading: 'lazy' }}
+        {%- else -%}
+          {{ 'collection-2' | placeholder_svg_tag: 'koan-lifestyle-grid__img placeholder-svg' }}
+        {%- endif -%}
+        <div class="koan-lifestyle-grid__overlay">
+          <span>{{ section.settings.label_2 | default: "BERLIN" }}</span>
+        </div>
+      </div>
+      <div class="koan-lifestyle-grid__item">
+        {%- if section.settings.image_3 != blank -%}
+          {{ section.settings.image_3 | image_url: width: 800 | image_tag: class: 'koan-lifestyle-grid__img', loading: 'lazy' }}
+        {%- else -%}
+          {{ 'collection-3' | placeholder_svg_tag: 'koan-lifestyle-grid__img placeholder-svg' }}
+        {%- endif -%}
+        <div class="koan-lifestyle-grid__overlay">
+          <span>{{ section.settings.label_3 | default: "TOKYO" }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .koan-lifestyle-grid {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .koan-lifestyle-grid__container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* 1 Large, 1 Column for stacked */
+    gap: 0;
+    border: 2px solid #000000;
+    background-color: #000000; /* For gap lines if we used gap */
+  }
+
+  .koan-lifestyle-grid__col-right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .koan-lifestyle-grid__item {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #000000; /* Inner borders */
+    /* Ensure filters work */
+    background-color: #000000;
+  }
+
+  .koan-lifestyle-grid__item--large {
+    /* Takes full height of left column */
+  }
+
+  /* STACKED HEIGHTS */
+  .koan-lifestyle-grid__col-right .koan-lifestyle-grid__item {
+    height: 50%;
+  }
+
+  /* IMAGE STYLES */
+  .koan-lifestyle-grid__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.4s ease, transform 0.4s ease;
+    filter: grayscale(100%);
+  }
+
+  .koan-lifestyle-grid__item:hover .koan-lifestyle-grid__img {
+    filter: grayscale(0%);
+    transform: scale(1.02);
+  }
+
+  /* OVERLAY LABEL */
+  .koan-lifestyle-grid__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #000000;
+    color: #FFFFFF;
+    padding: 0.5rem 1.5rem;
+    z-index: 2;
+  }
+
+  .koan-lifestyle-grid__overlay span {
+    font-family: "Impact", "Oswald", sans-serif;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* RESPONSIVE */
+  @media screen and (max-width: 749px) {
+    .koan-lifestyle-grid__container {
+      grid-template-columns: 1fr;
+    }
+
+    .koan-lifestyle-grid__item {
+      height: 300px; /* Fixed height on mobile */
+    }
+
+    .koan-lifestyle-grid__col-right .koan-lifestyle-grid__item {
+      height: 300px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Koan Lifestyle Grid",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image 1 (Grande - Gauche)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "text",
+      "id": "label_1",
+      "label": "Label 1",
+      "default": "PARIS"
+    },
+    {
+      "type": "header",
+      "content": "Image 2 (Haut - Droite)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "text",
+      "id": "label_2",
+      "label": "Label 2",
+      "default": "BERLIN"
+    },
+    {
+      "type": "header",
+      "content": "Image 3 (Bas - Droite)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image 3"
+    },
+    {
+      "type": "text",
+      "id": "label_3",
+      "label": "Label 3",
+      "default": "TOKYO"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Koan Lifestyle Grid"
+    }
+  ]
+}
+{% endschema %}
