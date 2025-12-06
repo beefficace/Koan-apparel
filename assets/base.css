@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap');
+
 :root {
   --alpha-button-background: 1;
   --alpha-button-border: 1;
@@ -3516,4 +3519,58 @@ details-disclosure > details {
   .animate--hover-vertical-lift .button:not([disabled]).button--secondary:hover:after {
     --border-offset: 0px; /* Prevent the border from growing on buttons when this effect is on. */
   }
+}
+
+/* Custom Global Design System Overrides */
+
+:root {
+  --font-heading-family: 'Tenor Sans', sans-serif !important;
+  --font-body-family: 'Assistant', sans-serif !important;
+  --color-base-text: #1C1C1C;
+  --color-base-background-1: #F6F6F4;
+}
+
+body, .text-body, p {
+  line-height: 1.6 !important;
+  font-family: 'Assistant', sans-serif !important;
+  color: #1C1C1C;
+  background-color: #F6F6F4;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: 'Tenor Sans', sans-serif !important;
+  color: #1C1C1C;
+  font-weight: 400; /* Editorial style usually implies not bold */
+}
+
+/* Button Styles */
+.button {
+  border-radius: 2px !important;
+}
+
+/* Primary Button (Solid Black) */
+.button:not(.button--secondary):not(.button--tertiary) {
+  background-color: #1C1C1C !important;
+  color: #FFFFFF !important;
+  border: 1px solid #1C1C1C !important;
+}
+.button:not(.button--secondary):not(.button--tertiary):after {
+  box-shadow: none !important;
+}
+
+/* Secondary Button (Outline) */
+.button--secondary {
+  background-color: transparent !important;
+  color: #1C1C1C !important;
+  border: 1px solid #1C1C1C !important;
+  box-shadow: none !important;
+}
+
+.button--secondary:after {
+  box-shadow: none !important;
+}
+
+/* Ensure background color is applied globally */
+.gradient {
+  background: #F6F6F4 !important;
 }
