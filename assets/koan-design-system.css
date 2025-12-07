@@ -1,0 +1,65 @@
+/* ==============================================
+   KOAN APPAREL - DESIGN SYSTEM
+   Mobile-First | Minimalist | Fluid Typography
+   ============================================== */
+
+:root {
+  /* Color Palette - Reference (Values applied via settings_data.json, but defined here for CSS usage) */
+  --koan-bg: #FAFAFA;
+  --koan-text: #1A1A1A;
+  --koan-accent: #D32F2F;
+
+  /* Typography - Fluid (Clamp) */
+  /* Viewport Range: 375px - 1440px */
+
+  --font-h1-min: 2.5rem;  /* 40px */
+  --font-h1-max: 4.5rem;  /* 72px */
+  --font-h1-fluid: clamp(var(--font-h1-min), 5vw + 1rem, var(--font-h1-max));
+
+  --font-h2-min: 2rem;    /* 32px */
+  --font-h2-max: 3.5rem;  /* 56px */
+  --font-h2-fluid: clamp(var(--font-h2-min), 4vw + 1rem, var(--font-h2-max));
+
+  --font-h3-min: 1.5rem;  /* 24px */
+  --font-h3-max: 2.5rem;  /* 40px */
+  --font-h3-fluid: clamp(var(--font-h3-min), 3vw + 1rem, var(--font-h3-max));
+
+  --font-body-min: 1rem;       /* 16px */
+  --font-body-max: 1.125rem;   /* 18px */
+  --font-body-fluid: clamp(var(--font-body-min), 0.5vw + 0.875rem, var(--font-body-max));
+
+  /* Spacing - Generous */
+  --space-unit: 8px;
+  --space-xs: calc(var(--space-unit) * 1);  /* 8px */
+  --space-sm: calc(var(--space-unit) * 2);  /* 16px */
+  --space-md: calc(var(--space-unit) * 4);  /* 32px */
+  --space-lg: calc(var(--space-unit) * 8);  /* 64px */
+  --space-xl: calc(var(--space-unit) * 12); /* 96px */
+  --space-xxl: calc(var(--space-unit) * 16); /* 128px */
+
+  /* Mobile Architecture / Grid */
+  --grid-mobile-col: 4;
+  --grid-desktop-col: 12;
+  --grid-gap: clamp(16px, 2vw, 40px);
+}
+
+/* Typography Overrides to Enforce Fluid Scale */
+h1, .h1 { font-size: var(--font-h1-fluid) !important; }
+h2, .h2 { font-size: var(--font-h2-fluid) !important; }
+h3, .h3 { font-size: var(--font-h3-fluid) !important; }
+body, .text-body { font-size: var(--font-body-fluid) !important; }
+
+/* Grid Gap Overrides */
+.grid {
+  column-gap: var(--grid-gap) !important;
+  row-gap: var(--grid-gap) !important;
+}
+
+/* 4-Column Mobile Grid Support (Utility) */
+/* This allows specific sections to opt-in to 4-col on mobile if they use this class */
+@media screen and (max-width: 749px) {
+  .grid--4-col-mobile .grid__item {
+    width: calc(25% - var(--grid-mobile-horizontal-spacing) * 3 / 4);
+    max-width: calc(25% - var(--grid-mobile-horizontal-spacing) * 3 / 4);
+  }
+}
