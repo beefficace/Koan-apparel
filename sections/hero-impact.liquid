@@ -1,0 +1,148 @@
+{{ 'koan-hero.css' | asset_url | stylesheet_tag }}
+
+<div class="koan-hero" style="background-color: {{ section.settings.bg_color }};">
+  {% if section.settings.image != blank %}
+    {{ section.settings.image | image_url: width: 2000 | image_tag:
+       class: 'koan-hero__image',
+       widths: '375, 750, 1100, 1500, 1780, 2000',
+       sizes: '100vw',
+       loading: 'eager',
+       alt: section.settings.image.alt | escape
+    }}
+  {% else %}
+    <div class="koan-hero__placeholder"></div>
+  {% endif %}
+
+  <div class="koan-hero__content page-width">
+    <div class="koan-hero__text-container">
+      {% if section.settings.heading != blank %}
+        <h1 class="koan-hero__heading reveal-on-scroll reveal-on-scroll--delay-100">
+          {{ section.settings.heading }}
+        </h1>
+      {% endif %}
+
+      {% if section.settings.subheading != blank %}
+        <p class="koan-hero__subheading reveal-on-scroll reveal-on-scroll--delay-200">
+          {{ section.settings.subheading }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.button_label != blank %}
+        <a href="{{ section.settings.button_link }}" class="button button--outline reveal-on-scroll reveal-on-scroll--delay-300">
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .koan-hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .koan-hero__image, .koan-hero__placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .koan-hero__placeholder {
+    background-color: var(--koan-bg);
+    opacity: 0.1; /* Slight texture if fallback */
+  }
+
+  .koan-hero__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff; /* Default to white for high impact on images/dark bg */
+  }
+
+  /* Text Styles overrides for Impact */
+  .koan-hero__heading {
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: inherit;
+  }
+
+  .koan-hero__subheading {
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    font-family: var(--font-body-family);
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: inherit;
+  }
+
+  .button--outline {
+    background: transparent;
+    border: 1px solid currentColor;
+    color: inherit;
+    padding: 1rem 3rem;
+  }
+
+  .button--outline:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero Impact",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background Image"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Fallback Background Color",
+      "default": "#333333"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "La Sagesse de la Rue"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Meaningful Streetwear"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Discover Collection"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Impact"
+    }
+  ]
+}
+{% endschema %}

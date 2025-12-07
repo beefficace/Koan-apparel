@@ -1,0 +1,167 @@
+<div class="koan-editorial-slider page-width">
+  {% if section.settings.heading != blank %}
+    <h2 class="h2 reveal-on-scroll" style="margin-bottom: 2rem;">{{ section.settings.heading }}</h2>
+  {% endif %}
+
+  <div class="koan-slider__container reveal-on-scroll reveal-on-scroll--delay-200">
+    <div class="koan-slider__track">
+      {% for block in section.blocks %}
+        <div class="koan-slider__card">
+          <div class="koan-slider__image-wrapper" style="background-color: #E0E0E0;">
+            {% if block.settings.product != blank and block.settings.product.featured_image %}
+              {{ block.settings.product.featured_image | image_url: width: 800 | image_tag:
+                 class: 'koan-slider__image',
+                 loading: 'lazy'
+              }}
+            {% else %}
+               <!-- Placeholder handled by wrapper bg or generic SVG -->
+               {{ 'product-1' | placeholder_svg_tag: 'koan-slider__placeholder-svg' }}
+            {% endif %}
+          </div>
+          <div class="koan-slider__info">
+            <h3 class="koan-slider__title">
+              {% if block.settings.product != blank %}
+                {{ block.settings.product.title }}
+              {% else %}
+                Product Name
+              {% endif %}
+            </h3>
+            <span class="koan-slider__price">
+              {% if block.settings.product != blank %}
+                {{ block.settings.product.price | money }}
+              {% else %}
+                $120.00
+              {% endif %}
+            </span>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .koan-editorial-slider {
+    padding-top: var(--space-lg);
+    padding-bottom: var(--space-lg);
+    overflow: hidden; /* Hide scrollbar if parent restricts */
+  }
+
+  .koan-slider__container {
+    width: 100%;
+    /* Ensure track can scroll horizontally */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2rem; /* Space for scrollbar or shadow */
+    margin-right: -1.5rem; /* Negate page padding on right to bleed edge */
+  }
+
+  .koan-slider__track {
+    display: flex;
+    gap: 1.5rem;
+    padding-right: 1.5rem; /* spacer at end */
+  }
+
+  .koan-slider__card {
+    flex: 0 0 85%; /* Mobile: 85% width for peek effect */
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media screen and (min-width: 750px) {
+    .koan-slider__card {
+      flex: 0 0 400px; /* Desktop fixed width or percentage */
+    }
+  }
+
+  .koan-slider__image-wrapper {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+
+  .koan-slider__image, .koan-slider__placeholder-svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .koan-slider__card:hover .koan-slider__image {
+    transform: scale(1.05);
+  }
+
+  .koan-slider__placeholder-svg {
+    background: #f0f0f0;
+    fill: #999;
+  }
+
+  .koan-slider__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .koan-slider__title {
+    font-family: var(--font-heading-family);
+    font-size: 1.25rem;
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .koan-slider__price {
+    font-family: var(--font-body-family);
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+
+  /* Hide scrollbar for cleaner look */
+  .koan-slider__container::-webkit-scrollbar {
+    display: none;
+  }
+  .koan-slider__container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Editorial Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Collection"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Editorial Slider",
+      "blocks": [
+        {"type": "product"},
+        {"type": "product"},
+        {"type": "product"}
+      ]
+    }
+  ]
+}
+{% endschema %}

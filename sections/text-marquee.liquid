@@ -1,0 +1,77 @@
+<div class="koan-marquee">
+  <div class="koan-marquee__track">
+    <div class="koan-marquee__content">
+      {% for i in (1..10) %}
+        <span class="koan-marquee__item">{{ section.settings.text }}</span>
+        <span class="koan-marquee__separator">•</span>
+      {% endfor %}
+    </div>
+    <!-- Duplicate for seamless loop -->
+    <div class="koan-marquee__content" aria-hidden="true">
+       {% for i in (1..10) %}
+        <span class="koan-marquee__item">{{ section.settings.text }}</span>
+        <span class="koan-marquee__separator">•</span>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .koan-marquee {
+    background-color: #000;
+    color: #fff;
+    overflow: hidden;
+    padding: 1.5rem 0;
+    white-space: nowrap;
+  }
+
+  .koan-marquee__track {
+    display: flex;
+    width: fit-content;
+    animation: marquee-scroll 20s linear infinite;
+  }
+
+  .koan-marquee__content {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .koan-marquee__item {
+    font-family: var(--font-body-family); /* Sans-serif as requested */
+    font-weight: 700;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 1rem;
+  }
+
+  .koan-marquee__separator {
+    font-size: 1.5rem;
+    opacity: 0.5;
+  }
+
+  @keyframes marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Text Marquee",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Marquee Text",
+      "default": "LOOK BEYOND WHAT YOU SEE - SLOW AND STEADY WINS THE RACE"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text Marquee"
+    }
+  ]
+}
+{% endschema %}
