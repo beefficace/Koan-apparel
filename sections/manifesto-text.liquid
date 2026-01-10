@@ -1,0 +1,66 @@
+<div class="koan-manifesto page-width">
+  <div class="koan-manifesto__grid">
+    <div class="koan-manifesto__col reveal-on-scroll">
+      {% if section.settings.heading != blank %}
+        <h2 class="h2" style="margin-top: 0;">{{ section.settings.heading }}</h2>
+      {% endif %}
+    </div>
+    <div class="koan-manifesto__col reveal-on-scroll reveal-on-scroll--delay-100">
+      {% if section.settings.text != blank %}
+        <div class="koan-manifesto__text text-body">
+          {{ section.settings.text }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .koan-manifesto {
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-xl);
+  }
+
+  .koan-manifesto__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  @media screen and (min-width: 750px) {
+    .koan-manifesto__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+    }
+  }
+
+  .koan-manifesto__text {
+    font-size: clamp(1.25rem, 2vw, 1.75rem); /* Large editorial style */
+    line-height: 1.5;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Manifesto Text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Philosophy"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>On nous a appris que la sagesse se trouvait dans de vieux livres... Nous pensons qu'elle est partout.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Manifesto Text"
+    }
+  ]
+}
+{% endschema %}

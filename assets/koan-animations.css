@@ -1,0 +1,17 @@
+/* Global Scroll Reveal Animation */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for children if needed */
+.reveal-on-scroll--delay-100 { transition-delay: 0.1s; }
+.reveal-on-scroll--delay-200 { transition-delay: 0.2s; }
+.reveal-on-scroll--delay-300 { transition-delay: 0.3s; }

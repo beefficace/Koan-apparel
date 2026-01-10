@@ -1,0 +1,174 @@
+/* Koan Header Layout */
+.koan-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), background-color 0.3s ease;
+  height: var(--header-height, 60px);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+}
+
+/* Initial Transparent State (assuming overlay on hero) */
+.koan-header--transparent {
+  background-color: transparent;
+  color: var(--koan-text); /* Fallback, likely overridden by hero contrast or specific setting */
+}
+
+/* Solid State (scrolled) */
+.koan-header--solid {
+  background-color: var(--koan-bg);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Hide/Show Logic */
+.koan-header--hidden {
+  transform: translateY(-100%);
+}
+
+.koan-header--visible {
+  transform: translateY(0);
+}
+
+.koan-header__container {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  width: 100%;
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 100%;
+}
+
+/* Left: Hamburger */
+.koan-header__left {
+  justify-self: start;
+  display: flex;
+}
+
+.hamburger-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 24px;
+}
+
+.hamburger-line {
+  display: block;
+  width: 100%;
+  height: 1px; /* Minimalist thin lines */
+  background-color: currentColor;
+  transition: transform 0.3s ease;
+}
+
+/* Center: Logo */
+.koan-header__center {
+  justify-self: center;
+  text-align: center;
+}
+
+.koan-logo-text {
+  font-family: var(--font-heading-family);
+  font-weight: var(--font-heading-weight);
+  font-size: 1.5rem; /* ~24px */
+  text-decoration: none;
+  color: currentColor;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.koan-logo-img {
+  display: block;
+  height: auto;
+  max-height: 40px; /* Constraint height to keep header compact */
+}
+
+/* Right: Icons */
+.koan-header__right {
+  justify-self: end;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: currentColor;
+  display: flex;
+  align-items: center;
+}
+
+.icon-svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.5px; /* Thin outline style */
+}
+
+/* Full Screen Overlay Menu */
+.koan-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--koan-bg);
+  z-index: 999; /* Just below header */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  padding-top: 60px; /* Offset for header */
+}
+
+.koan-menu-overlay.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.koan-menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.koan-menu-item {
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.koan-menu-link {
+  font-family: var(--font-heading-family);
+  font-size: clamp(2rem, 5vw, 4rem);
+  text-decoration: none;
+  color: var(--koan-text);
+  font-weight: 300; /* Light weight */
+}
+
+.koan-menu-link:hover {
+  color: var(--koan-accent);
+}
+
+/* Staggered Animation classes are handled via JS adding inline styles or nth-child delays,
+   but we can set a base delay here if we assume a fixed number, or use JS to set custom properties.
+   We will use JS to add 'is-visible' class to items with delay. */
+.koan-menu-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
